@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PA_EjemploApi.Models;
 
-namespace Rememba.Services.Users.Data
+namespace PA_EjemploApi.Services.Users.Data
 {
     public class EjemploDbContext : DbContext
     {
