@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using PA_EjemploApi.DTO;
 using PA_EjemploApi.Models;
-using Rememba.Services.Users.Data;
+using PA_EjemploApi.Services.Users.Data;
 
 namespace PA_EjemploApi.Services
 {

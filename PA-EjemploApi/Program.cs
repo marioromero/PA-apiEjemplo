@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using Rememba.Services.Users.Data;
+using PA_EjemploApi.Services.Users.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
