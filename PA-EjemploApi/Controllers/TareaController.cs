@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 using PA_EjemploApi.DTO;
 using PA_EjemploApi.Models;
 using PA_EjemploApi.Responses;
 using PA_EjemploApi.Services;
+using Rememba.Services.Users.Data;
 
 namespace PA_EjemploApi.Controllers
 {
@@ -10,13 +12,13 @@ namespace PA_EjemploApi.Controllers
     [Route("MiApiDeEjemplo/[controller]")]
     public class TareaController : Controller
     {
-        //instanciamos el servicio de tareas, el cual llamaremos desde los métodos de la API (endpoints)
         private readonly TareaService _tareaService;
 
-        public TareaController()
+        public TareaController(IServiceProvider serviceProvider)
         {
-            // Creamos la instancia de TareaService manualmente
-            _tareaService = new TareaService();
+            var context = serviceProvider.GetRequiredService<EjemploDbContext>();
+            _tareaService = new TareaService(context);
+
         }
 
         [HttpGet("obtener-tareas")]
