@@ -12,14 +12,14 @@ using PA_EjemploApi.Services.Users.Data;
 namespace PA_EjemploApi.Migrations
 {
     [DbContext(typeof(EjemploDbContext))]
-    [Migration("20240925035609_Relacion")]
-    partial class Relacion
+    [Migration("20250923025143_Primera")]
+    partial class Primera
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.33")
+                .HasAnnotation("ProductVersion", "6.0.36")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);

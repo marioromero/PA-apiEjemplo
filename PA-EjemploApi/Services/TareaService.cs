@@ -16,14 +16,18 @@ namespace PA_EjemploApi.Services
         }
         public async Task<List<Tarea>> ListaTareas()
         {
-            List<Tarea> tareas = await context.Tareas.ToListAsync();
+            //List<Tarea> tareas = await context.Tareas.ToListAsync();
+
+            List<Tarea> tareas = Tarea.CargarTareas();
 
             return tareas;
         }
 
         public async Task<Tarea> ObtenerTarea(int id)
         {
-            Tarea tarea = await context.Tareas.FindAsync(id);
+            //Tarea tarea = await context.Tareas.FindAsync(id);
+
+            Tarea tarea = Tarea.CargarTarea();
 
             return tarea;
         }

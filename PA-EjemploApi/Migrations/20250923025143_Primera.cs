@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PA_EjemploApi.Migrations
 {
-    public partial class Inicial : Migration
+    public partial class Primera : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,6 +54,12 @@ namespace PA_EjemploApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Usuarios", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Usuarios_Roles_RolId",
+                        column: x => x.RolId,
+                        principalTable: "Roles",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.InsertData(
@@ -65,18 +71,23 @@ namespace PA_EjemploApi.Migrations
                 table: "Roles",
                 columns: new[] { "Id", "Nombre" },
                 values: new object[] { 2, "Empleado" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuarios_RolId",
+                table: "Usuarios",
+                column: "RolId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Roles");
-
-            migrationBuilder.DropTable(
                 name: "Tareas");
 
             migrationBuilder.DropTable(
                 name: "Usuarios");
+
+            migrationBuilder.DropTable(
+                name: "Roles");
         }
     }
 }

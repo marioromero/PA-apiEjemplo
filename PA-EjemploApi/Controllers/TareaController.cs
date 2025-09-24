@@ -29,7 +29,7 @@ namespace PA_EjemploApi.Controllers
             var response = new TareasResponse
             {
                 Data = tareas,
-                Code = 200,
+                Status = true,
                 Message = "Tareas obtenidas correctamente"
             };
 
@@ -44,7 +44,7 @@ namespace PA_EjemploApi.Controllers
             var response = new TareaResponse
               {
                 Data = tarea,
-                Code = 200,
+                Status = true,
                 Message = "Tarea obtenida correctamente"
               };
 
@@ -60,7 +60,7 @@ namespace PA_EjemploApi.Controllers
             var response = new NuevaTareaResponse
             {
                 Data = ingreso,
-                Code = 200,
+                Status = true,
                 Message = "Tarea ingresada correctamente"
             };
 
