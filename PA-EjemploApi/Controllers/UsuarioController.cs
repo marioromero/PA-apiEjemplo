@@ -12,19 +12,19 @@ namespace PA_EjemploApi.Controllers
     [Route("MiApiDeEjemplo/[controller]")]
     public class UsuarioController : Controller
     {
-        private readonly UsuarioService _tareaService;
+        private readonly UsuarioService _usuarioService;
 
         public UsuarioController(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<EjemploDbContext>();
-            _tareaService = new UsuarioService(context);
+            _usuarioService = new UsuarioService(context);
 
         }
 
-        [HttpGet("obtener-tareas")]
+        [HttpGet("obtener-usuarios")]
         public async Task<ActionResult<UsuariosResponse>> GetUsuarios()
         {
-            var result = await _tareaService.ListaUsuarios();
+            var result = await _usuarioService.ListaUsuarios();
 
             var response = new UsuariosResponse
             {
@@ -36,10 +36,10 @@ namespace PA_EjemploApi.Controllers
             return Ok(response);
         }
 
-        [HttpGet("obtener-tarea")]
+        [HttpGet("obtener-usuario")]
         public async Task<ActionResult<UsuarioResponse>> GetUsuario(int id)
         {
-            var result = await _tareaService.ObtenerUsuario(id);
+            var result = await _usuarioService.ObtenerUsuario(id);
 
             var response = new UsuarioResponse
             {
@@ -51,10 +51,10 @@ namespace PA_EjemploApi.Controllers
             return Ok(response);
         }
 
-        [HttpPost("ingresar-tarea")]
-        public async Task<ActionResult<NuevaUsuarioResponse>> PostUsuario([FromBody] UsuarioDTO tarea)
+        [HttpPost("ingresar-usuario")]
+        public async Task<ActionResult<NuevaUsuarioResponse>> PostUsuario([FromBody] UsuarioDTO usuario)
         {
-            var result = await _tareaService.IngresarUsuario(tarea);
+            var result = await _usuarioService.IngresarUsuario(usuario);
 
             var response = new NuevaUsuarioResponse
             {
@@ -69,7 +69,7 @@ namespace PA_EjemploApi.Controllers
         [HttpPut("editar-usuario/{id}")]
         public async Task<ActionResult<NuevaUsuarioResponse>> PutUsuario(int id, [FromBody] UsuarioDTO usuario)
         {
-            var result = await _tareaService.EditarUsuario(id, usuario);
+            var result = await _usuarioService.EditarUsuario(id, usuario);
 
             var response = new NuevaUsuarioResponse
             {
@@ -84,7 +84,7 @@ namespace PA_EjemploApi.Controllers
         [HttpDelete("eliminar-usuario/{id}")]
         public async Task<ActionResult<NuevaUsuarioResponse>> DeleteUsuario(int id)
         {
-            var result = await _tareaService.EliminarUsuario(id);
+            var result = await _usuarioService.EliminarUsuario(id);
 
             var response = new NuevaUsuarioResponse
             {
